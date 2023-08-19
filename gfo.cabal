@@ -1,0 +1,37 @@
+cabal-version:      3.4
+name:               gfo
+version:            0.0.0.1
+license:            MIT
+license-file:       LICENSE
+author:             Tom Cumming
+maintainer:         mail@tomcumming.co.uk
+category:           Math
+
+common shared
+    ghc-options: -Wall
+    default-language: GHC2021
+    default-extensions:
+        LambdaCase
+        RecordWildCards
+        FunctionalDependencies
+    build-depends:
+        base ^>=4.16.4.0,
+        containers,
+        random
+
+library
+    import:           shared
+    exposed-modules:
+        GFO
+    hs-source-dirs:   src
+    build-depends:
+        mtl
+
+test-suite gfo-test
+    import:           shared
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    other-modules:
+    build-depends:
+        gfo
